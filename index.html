@@ -24,10 +24,6 @@
       border-radius: 50%;
       object-fit: cover;
       border: 5px solid white;
-      position: absolute;
-      bottom: -75px;
-      left: 50%;
-      transform: translateX(-50%);
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
     .section-title {
@@ -47,21 +43,23 @@
   <!-- 暗黑模式切換 -->
   <button class="btn btn-outline-secondary position-absolute top-0 end-0 m-3" id="themeToggleBtn">🌙</button>
 
-  <!-- Banner -->
-  <div class="banner position-relative">
-    <img src="image/self_photo.jpeg" alt="頭貼" class="avatar" />
-  </div>
+  <!-- Banner (僅背景) -->
+  <div class="banner"></div>
 
-  <div class="container py-5 mt-5">
+  <div class="container py-4">
     <div class="row">
       <!-- ===== 左側主要內容 ===== -->
       <main class="col-md-9">
+        <!-- ✅ 頭貼與名字對齊 -->
         <header class="text-center mb-5">
-          <h1 class="fw-bold">Hank Hsu</h1>
-          <p class="lead">IT Engineer | OT Engineer | AI Data Enthusiast</p>
+          <div class="d-flex flex-column align-items-center">
+            <img src="image/self_photo.jpeg" alt="頭貼" class="avatar mb-3" />
+            <h1 class="fw-bold">Hank Hsu</h1>
+            <p class="lead">IT Engineer | OT Engineer | AI Data Enthusiast</p>
+          </div>
         </header>
 
-        <!-- Contact Info 回到左側 -->
+        <!-- Contact Info -->
         <section id="contact" class="mb-5">
           <h2 class="section-title">Contact Info</h2>
           <ul class="list-unstyled">
