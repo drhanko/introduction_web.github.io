@@ -9,6 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
     body {
+      position: relative;
       padding-top: 20px;
     }
     .banner {
@@ -18,142 +19,182 @@
       margin-bottom: 20px;
     }
     .avatar {
-      width: 100px;
-      height: 100px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 15px;
+      border: 5px solid white;
+      position: absolute;
+      bottom: -75px;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
-    .sidebar {
+    .section-title {
+      border-bottom: 2px solid #0d6efd;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    /* 右側導覽固定 */
+    #sidebar-nav {
       position: sticky;
-      top: 20px;
+      top: 100px;
     }
   </style>
 </head>
 
-<body class="container-fluid">
-  <div class="row">
-    <!-- ===== 左側主要內容 ===== -->
-    <main class="col-md-8">
-      <!-- 頁面橫幅 -->
-      <div class="banner"></div>
+<body data-bs-spy="scroll" data-bs-target="#sidebar-nav" data-bs-offset="100" tabindex="0">
+  <!-- 暗黑模式切換 -->
+  <button class="btn btn-outline-secondary position-absolute top-0 end-0 m-3" id="themeToggleBtn">🌙</button>
 
-      <!-- Professional Highlight -->
-      <section id="highlight">
-        <h2>Professional Highlight</h2>
-        <ul>
-          <li>Data Engineering
-            <ul>
-              <li>ETL Pipeline Development</li>
-              <li>Data Warehouse Design</li>
-            </ul>
-          </li>
-          <li>Machine Learning
-            <ul>
-              <li>Supervised / Unsupervised Models</li>
-              <li>Model Deployment & Monitoring</li>
-            </ul>
-          </li>
-          <li>Cloud Computing
-            <ul>
-              <li>AWS / GCP / Azure</li>
-              <li>Serverless Architecture</li>
-            </ul>
-          </li>
-        </ul>
-      </section>
+  <!-- Banner -->
+  <div class="banner position-relative">
+    <img src="image/self_photo.jpeg" alt="頭貼" class="avatar" />
+  </div>
 
-      <!-- Education -->
-      <section id="education" class="mt-4">
-        <h2>Education</h2>
-        <div class="accordion" id="eduAccordion">
-          <!-- 成大 -->
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="edu1">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#eduCollapse1">
-                成功大學 資訊管理所
-              </button>
-            </h2>
-            <div id="eduCollapse1" class="accordion-collapse collapse show" data-bs-parent="#eduAccordion">
-              <div class="accordion-body">
-                <p>碩士｜資料科學研究</p>
-                <p>相關課程：機器學習、資料探勘</p>
+  <div class="container py-5 mt-5">
+    <div class="row">
+      <!-- ===== 左側主要內容 ===== -->
+      <main class="col-md-9">
+        <header class="text-center mb-5">
+          <h1 class="fw-bold">Hank Hsu</h1>
+          <p class="lead">IT Engineer | OT Engineer | AI Data Enthusiast</p>
+        </header>
+
+        <!-- Contact Info 回到左側 -->
+        <section id="contact" class="mb-5">
+          <h2 class="section-title">Contact Info</h2>
+          <ul class="list-unstyled">
+            <li><strong>Email：</strong> godhanko@gmail.com</li>
+            <li><strong>LinkedIn：</strong>
+              <a href="https://www.linkedin.com/in/hank-hsu-59a181181/" target="_blank">Hank Hsu</a>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Professional Highlight with sub-items -->
+        <section id="skills" class="mb-5">
+          <h2 class="section-title">Professional Highlight</h2>
+          <ul>
+            <li>Technical Skills
+              <ul>
+                <li>Python / SQL / Linux</li>
+                <li>Machine Learning / Data Science</li>
+              </ul>
+            </li>
+            <li>Project/Experience Summary
+              <ul>
+                <li>Data Engineering & ETL</li>
+                <li>Model Deployment & Monitoring</li>
+              </ul>
+            </li>
+            <li>Soft Skills
+              <ul>
+                <li>Team Collaboration</li>
+                <li>Agile Development</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Education with Accordion -->
+        <section id="education" class="mb-5">
+          <h2 class="section-title">Education</h2>
+          <div class="accordion" id="eduAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="edu1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#eduCollapse1">
+                  University of Southern California – Applied Data Science (Jan. 2026 – Present)
+                </button>
+              </h2>
+              <div id="eduCollapse1" class="accordion-collapse collapse show" data-bs-parent="#eduAccordion">
+                <div class="accordion-body">
+                  Master of Science in Applied Data Science<br>
+                  Coursework: Machine Learning, Big Data Analytics
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="edu2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#eduCollapse2">
+                  National Cheng Kung University – Information Management (Sept. 2018 – Jun. 2020)
+                </button>
+              </h2>
+              <div id="eduCollapse2" class="accordion-collapse collapse" data-bs-parent="#eduAccordion">
+                <div class="accordion-body">
+                  Master of Science in Information Management<br>
+                  Thesis: Data Mining & Predictive Modeling
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="edu3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#eduCollapse3">
+                  National Chung Cheng University – Information Management (Sept. 2014 – Jun. 2018)
+                </button>
+              </h2>
+              <div id="eduCollapse3" class="accordion-collapse collapse" data-bs-parent="#eduAccordion">
+                <div class="accordion-body">
+                  Bachelor of Science in Information Management
+                </div>
               </div>
             </div>
           </div>
-          <!-- USC -->
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="edu2">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#eduCollapse2">
-                University of Southern California - Applied Data Science (Spring 2026)
-              </button>
-            </h2>
-            <div id="eduCollapse2" class="accordion-collapse collapse" data-bs-parent="#eduAccordion">
-              <div class="accordion-body">
-                <p>Master of Science in Applied Data Science</p>
-                <p>Course Plan: Machine Learning, Big Data Analytics</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Experience -->
-      <section id="experience" class="mt-4">
-        <h2>Experience</h2>
-        <p>Software Developer @ TSMC</p>
-        <p>Data Engineering Intern @ [Company Name]</p>
-      </section>
+        <!-- Experience -->
+        <section id="experience" class="mb-5">
+          <h2 class="section-title">Professional Experience</h2>
+          <ul>
+            <li>
+              <strong>Operational Technology Engineer</strong>, Entegris, Inc.<br>
+              負責清理金融資料、建模預測股價趨勢，準確率提升 15%
+            </li>
+            <li class="mt-3">
+              <strong>自由接案工程師</strong>（2023～今）<br>
+              為中小企業設計網站並整合 Google Analytics 追蹤
+            </li>
+          </ul>
+        </section>
 
-      <!-- Skills -->
-      <section id="skills" class="mt-4">
-        <h2>Skills</h2>
-        <p>Python, SQL, Machine Learning, Cloud Computing</p>
-      </section>
-    </main>
+        <footer class="text-center text-muted mt-5">
+          &copy; 2025 Hank Hsu．Bootstrap + GitHub Pages 製作
+        </footer>
+      </main>
 
-    <!-- ===== 右側側欄（Contact Info + 導覽列） ===== -->
-    <aside class="col-md-4 sidebar">
-      <!-- Contact Info -->
-      <div class="card mb-4">
-        <div class="card-body text-center">
-          <img src="avatar.jpg" alt="頭貼" class="avatar">
-          <h5 class="card-title">你的名字</h5>
-          <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
-          <p>Phone: +886-9xx-xxx-xxx</p>
-          <p>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile/" target="_blank">Profile</a></p>
-        </div>
-      </div>
-
-      <!-- 導覽列 -->
-      <nav class="nav flex-column mb-3">
-        <a class="nav-link" href="#highlight">Professional Highlight</a>
-        <a class="nav-link" href="#education">Education</a>
-        <a class="nav-link" href="#experience">Experience</a>
-        <a class="nav-link" href="#skills">Skills</a>
-      </nav>
-
-      <!-- 暗黑模式切換 -->
-      <div class="text-center">
-        <button id="themeToggle" class="btn btn-outline-secondary btn-sm">Toggle Dark Mode</button>
-      </div>
-    </aside>
+      <!-- ===== 右側導覽列 ===== -->
+      <aside class="col-md-3 d-none d-md-block">
+        <nav id="sidebar-nav" class="nav flex-column text-end">
+          <span class="fw-bold mb-2">導覽</span>
+          <a class="nav-link" href="#contact">Contact Info</a>
+          <a class="nav-link" href="#skills">Professional Highlight</a>
+          <a class="nav-link" href="#education">Education</a>
+          <a class="nav-link" href="#experience">Experience</a>
+        </nav>
+      </aside>
+    </div>
   </div>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- 暗黑模式 JS -->
+  <!-- 暗黑模式切換 -->
   <script>
-    const themeToggleBtn = document.getElementById('themeToggle');
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme) document.documentElement.setAttribute('data-bs-theme', currentTheme);
-
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const root = document.documentElement;
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+      root.setAttribute('data-bs-theme', storedTheme);
+      themeToggleBtn.textContent = storedTheme === 'dark' ? '🌞' : '🌙';
+    }
     themeToggleBtn.addEventListener('click', () => {
-      let theme = document.documentElement.getAttribute('data-bs-theme');
-      let newTheme = (theme === 'dark') ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-bs-theme', newTheme);
+      const currentTheme = root.getAttribute('data-bs-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-bs-theme', newTheme);
       localStorage.setItem('theme', newTheme);
+      themeToggleBtn.textContent = newTheme === 'dark' ? '🌞' : '🌙';
     });
   </script>
 </body>
