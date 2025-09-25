@@ -37,6 +37,23 @@
       position: sticky;
       top: 100px;
     }
+
+    /* ===== Experience Section 強調樣式 ===== */
+#experience .job-title {
+  font-size: 1.3rem;       /* 稍微放大職稱 */
+  font-weight: 700;        /* 粗體 */
+  margin-bottom: 0.5rem;   /* 與 Tools 間距 */
+  color: #0d6efd;          /* USC藍 or Bootstrap 主色 */
+}
+
+#experience .tools-line {
+  margin: 0.5rem 0 1rem 0; /* 與上、下段落的空隙 */
+  padding: 0.5rem 0.75rem; /* 內邊距 */
+  background-color: #f8f9fa;  /* 淡灰底色 */
+  border-left: 4px solid #0d6efd; /* 左側藍線強調 */
+  border-radius: 0.25rem;
+  font-weight: 600;
+}
   </style>
 </head>
 
@@ -172,9 +189,12 @@
           <h2 class="section-title"><i class="bi bi-briefcase-fill me-2"></i>Professional Experience</h2>
           
           <div class="mb-4">
-            <strong>Operational Technology Engineer</strong>, Entegris, Inc. , Oct.2023 – Jun.2025
-            <!-- ✅ 新增 Tools -->
-            <li class="list-unstyled"><i class="bi bi-tools me-2"></i><strong>Tools：</strong>Ignition SCADA, Python, SQL, HighByte Intelligence Hub, Tenable OT, PowerBI</li>
+            <strong class="job-title">Operational Technology Engineer</strong>, Entegris, Inc. , Oct.2023 – Jun.2025
+
+            <li class="list-unstyled tools-line">
+              <i class="bi bi-tools me-2"></i><strong>Tools：</strong>
+              Ignition SCADA, Python, Java, SQL, HighByte Intelligence Hub, Tenable OT, PowerBI
+            </li>
             <ul>
               <li class="bi bi-brightness-high list-unstyled"><i class="me-2"></i>Key Achievement:</li>
               <ol>
@@ -194,6 +214,7 @@
               </ul>
             </ul>
           </div>
+
 
           <ul class="list-unstyled">
             <li>
