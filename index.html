@@ -22,11 +22,12 @@
 }
 
 header .avatar {
-  margin-top: -75px;     /* 150px 高的頭貼上浮一半 */
-  border: 5px solid white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  position: relative;
-  z-index: 2;
+  position: relative;      /* 讓 z-index 生效 */
+  z-index: 10;             /* 一定要比 banner 高 */
+  margin-top: -90px;       /* 往上浮出 banner */
+  border: 5px solid #fff;  /* 白框讓邊緣更清楚 */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+  background-color: #fff;  /* 如果圖片有透明邊，可以避免被背景透出 */
 }
     .avatar {
       width: 150px;
