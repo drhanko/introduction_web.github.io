@@ -13,6 +13,13 @@
       position: relative;
       padding-top: 20px;
     }
+        header .avatar {
+  margin-top: -75px;     /* ✅往上拉一半(150px高的50%) */
+  border: 5px solid white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;            /* ✅確保在 banner 之上 */
+}
     .banner {
       background: url('image/0B7A1926.JPG') center/cover;
       height: 200px;
@@ -20,14 +27,14 @@
       margin-bottom: 80px;   /* ✅拉大底部間距，讓頭貼可以半浮 */
       position: relative;
     }
-    /* .avatar {
+    .avatar {
       width: 150px;
       height: 150px;
       border-radius: 50%;
       object-fit: cover;
       border: 5px solid white;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    } */
+    }
     .section-title {
       border-bottom: 2px solid #0d6efd;
       display: inline-block;
@@ -38,13 +45,6 @@
       position: sticky;
       top: 100px;
     }
-    header .avatar {
-  margin-top: -75px;     /* ✅往上拉一半(150px高的50%) */
-  border: 5px solid white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  position: relative;
-  z-index: 2;            /* ✅確保在 banner 之上 */
-}
 
     /* ===== Experience Section 強調樣式 ===== */
 #experience .job-title {
