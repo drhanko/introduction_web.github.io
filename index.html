@@ -13,31 +13,12 @@
       position: relative;
       padding-top: 20px;
     }
-
-.banner-container {
-  position: relative;           /* 讓子元素可以用絕對定位 */
-  text-align: center;           /* 大頭照置中 */
-}
-
-.banner-img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.profile-pic {
-  position: absolute;
-  bottom: -80px;                 /* 向下蓋出 Banner */
-  left: 50%;
-  transform: translateX(-50%);   /* 水平置中 */
-}
-
-.profile-img {
-  width: 180px;                  /* 調整頭貼大小 */
-  height: 180px;
-  border-radius: 50%;
-  border: 5px solid #fff;        /* 白邊讓頭貼與 Banner 分開 */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+.banner {
+  background: url('image/0B7A1926.JPG') center/cover;
+  height: 200px;
+  border-radius: 0.75rem;
+  margin-bottom: 80px;   /* Banner 底部間距，留給頭貼 */
+  position: relative;
 }
 
 header .avatar {
@@ -92,20 +73,18 @@ header .avatar {
   <button class="btn btn-outline-secondary position-absolute top-0 end-0 m-3" id="themeToggleBtn">🌙</button>
 
   <!-- Banner (僅背景) -->
+  <div class="banner"></div>
+
   <div class="container py-4">
     <div class="row">
       <!-- ===== 左側主要內容 ===== -->
       <main class="col-md-9">
         <!-- ✅ 頭貼與名字對齊 -->
         <header class="text-center mb-5">
-          <div class="position-relative w-100">
-            <img src='image/0B7A1926.JPG'  class="img-fluid w-100" style="height:300px; object-fit:cover;">
-          <div class="d-flex flex-column align-items-center profile-pic">
-            <img src="image/self_photo.jpeg" alt="頭貼" class="rounded-circle border border-5 border-white position-absolute start-50 translate-middle-x"
-       style="width:180px; height:180px; bottom:-90px; object-fit:cover; box-shadow:0 4px 12px rgba(0,0,0,0.2);" />
+          <div class="d-flex flex-column align-items-center">
+            <img src="image/self_photo.jpeg" alt="頭貼" class="avatar mb-3" />
             <h1 class="fw-bold">Hank Hsu</h1>
             <p class="lead">IT Engineer | OT Engineer | AI Data Enthusiast</p>
-          </div>
           </div>
         </header>
         <!-- Contact Info -->
@@ -244,7 +223,7 @@ header .avatar {
               </ol>
               <li class="bi bi-journal-bookmark list-unstyled"><i class="me-2"></i>Notable Experience:</li>
               <ul>
-                <li style="list-style-type: square; ">Participate in the implementation of SCADA & Cybersecurity architecture in KSP:</li>
+                <li style="list-style-type: square;">Participate in the implementation of SCADA & Cybersecurity architecture in KSP:</li>
                 <ol>
                   <li>Coordinate and participate in 20+ Ignition ecosystem optimization (EX. HMI layout design, Tag binding & Script editing) of factory equipment with PE, Operation & IT team for improving operation efficiency.</li>
                   <li>Leading Ignition node extension project, which cooperated with global IT team and PE team, for improving the system effectiveness from constant stuttering and poor availability to stable performance.</li>
