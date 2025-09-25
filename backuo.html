@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>你的名字 - 個人簡歷</title>
+  <title>Hank Hsu Website</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -13,12 +13,22 @@
       position: relative;
       padding-top: 20px;
     }
-    .banner {
-      background: url('banner.jpg') center/cover;
-      height: 200px;
-      border-radius: 0.75rem;
-      margin-bottom: 20px;
-    }
+.banner {
+  background: url('image/0B7A1926.JPG') center/cover;
+  height: 200px;
+  border-radius: 0.75rem;
+  margin-bottom: 80px;   /* Banner 底部間距，留給頭貼 */
+  position: relative;
+}
+
+header .avatar {
+  position: relative;      /* 讓 z-index 生效 */
+  z-index: 10;             /* 一定要比 banner 高 */
+  margin-top: -90px;       /* 往上浮出 banner */
+  border: 5px solid #fff;  /* 白框讓邊緣更清楚 */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+  background-color: #fff;  /* 如果圖片有透明邊，可以避免被背景透出 */
+}
     .avatar {
       width: 150px;
       height: 150px;
@@ -31,11 +41,6 @@
       border-bottom: 2px solid #0d6efd;
       display: inline-block;
       margin-bottom: 1rem;
-    }
-    /* 右側導覽固定 */
-    #sidebar-nav {
-      position: sticky;
-      top: 100px;
     }
 
     /* ===== Experience Section 強調樣式 ===== */
@@ -54,12 +59,17 @@
   border-radius: 0.25rem;
   font-weight: 600;
 }
+
+/* 右側導覽列固定，但起點在 Banner 下方 */
+#sidebar-nav {
+  position: sticky;
+  top: 220px;            /* ✅200px banner + 20px 預留空間 */
+}
   </style>
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#sidebar-nav" data-bs-offset="100" tabindex="0">
   <!-- 暗黑模式切換 -->
-  <button class="btn btn-outline-secondary position-absolute top-0 end-0 m-3" id="themeToggleBtn">🌙</button>
 
   <!-- Banner (僅背景) -->
   <div class="banner"></div>
@@ -76,6 +86,14 @@
             <p class="lead">IT Engineer | OT Engineer | AI Data Enthusiast</p>
           </div>
         </header>
+        <!-- Contact Info -->
+        <section id="Facts about me" class="mb-5">
+          <h2 class="section-title"><i class="bi bi-person-arms-up me-2"></i>Facts about me</h2>
+          <ol>
+            <li>I am an IT/OT Engineer with 5 years of experience in the semiconductor industry, currently starting to explore the effectiveness of applied data science. </li>
+            <li>Outside of work, I am interested in badminton, wild adventure, and the art of movies.</li>
+          </ol>
+        </section>
 
         <!-- Contact Info -->
         <section id="contact" class="mb-5">
@@ -189,12 +207,15 @@
           <h2 class="section-title"><i class="bi bi-briefcase-fill me-2"></i>Professional Experience</h2>
           
           <div class="mb-4">
-            <strong>Operational Technology Engineer</strong>, Entegris, Inc. , Oct.2023 – Jun.2025
-            <!-- ✅ 新增 Tools -->
-            <li class="list-unstyled"><i class="bi bi-tools me-2"></i><strong>Tools：</strong>Ignition SCADA, Python, Java, SQL, HighByte Intelligence Hub, Tenable OT, PowerBI</li>
+            <strong class="job-title">Operational Technology Engineer</strong>, Entegris, Inc. , Oct.2023 – Jun.2025
+
+            <li class="list-unstyled tools-line">
+              <i class="bi bi-tools me-2"></i><strong>Tools&Skills：</strong>
+              Ignition SCADA, Python, Java, SQL, HighByte Intelligence Hub, Tenable OT, CyberArk, PowerBI, Cross-functional communication skill, Problem solving mindset, Project management.
+            </li>
             <ul>
               <li class="bi bi-brightness-high list-unstyled"><i class="me-2"></i>Key Achievement:</li>
-              <ol>
+              <ol type="a">
                 <li>Experienced with Ignition SCADA and IEC 62443 standard to optimize system architecture and design system standards for KSP.</li>
                 <li>Leading projects to solve KSP Ignition performance issues from constant stuttering to well performance.</li>
                 <li>Experienced with global operations which design and implement new methods, such as customized HighByte projects and Cybersecurity architecture improvement, to enhance KSP operation efficiency and security.</li>
@@ -212,30 +233,134 @@
             </ul>
           </div>
 
-          <ul class="list-unstyled">
-            <li>
-              <strong>Information Technology Engineer  </strong>, TSMC , Sep.2020 – Oct.2023  
-              <ul>
-                <li><i class="bi bi-graph-up me-2"></i>Key Achievement:</li>
-                <ul>
-                  <li>Experienced with Ignition SCADA and IEC 62443 standard to optimize system architecture and design system standards for KSP.</li>
-                  <li>Leading projects to solve KSP Ignition performance issues from constant stuttering to well performance.</li>
-                  <li>Experienced with global operations which design and implement new methods, such as customized HighByte projects and Cybersecurity architecture improvement, to enhance KSP operation efficiency and security.</li>
-                </ul>
-                <li><i class="bi bi-graph-up me-2"></i>Notable Experience:</li>
-                <ul>
-                  <li>Participate in the implementation of SCADA & Cybersecurity architecture in KSP:</li>
-                  <ul>
-                    <li>Coordinate and participate in 20+ Ignition ecosystem optimization (EX. HMI layout design, Tag binding & Script editing) of factory equipment with PE, Operation & IT team for improving operation efficiency.</li>
-                    <li>Leading Ignition node extension project, which cooperated with global IT team and PE team, for improving the system effectiveness from constant stuttering and poor availability to stable performance.</li>
-                    <li>Wrapping up the robust cybersecurity implementation, such as Tenable O.T and CyberArk, abides by the IEC 62443 standard with Cybersecurity and IT experts in the USA and Malaysia. </li>
-                    <li>Implementing 10+ Customized HighByte projects, which are for LIMS and IQC systems to exchange information between IT & OT layers with protection, to fulfill the demands of the LAB & Quality team.</li>
-                  </ul>
-                </ul>
-              </ul>
+          <div class="mb-4">
+            <strong class="job-title">Information Technology Engineer</strong>, TSMC , Sep.2020 – Oct.2023
+
+            <li class="list-unstyled tools-line">
+              <i class="bi bi-tools me-2"></i><strong>Tools&Skills：</strong>
+              Python, Java, SQL, PowerShell, Bash, Linux, Git, Hadoop, VMware, NAS(Dell Isilon,NetApp), x86 servers(HP,Supermicro,Dell,Lenovo), CyberArk, Tableau, PowerBI, Cross-functional communication skill, Problem solving mindset, Project management.
             </li>
-          </ul>
-        </section>
+            <ul>
+              <li class="bi bi-brightness-high list-unstyled"><i class="me-2"></i>Key Achievement:</li>
+              <ol type="a">
+                <li>Experienced with BigData, VMware, NAS management and x86 knowledge to develop automation to optimize the system performance with dramatic improvement and reduce implementation time.</li>
+                <li>Specialized in dealing with TSMC BigData architecture which is one of the largest and most complicated computing clusters in the world.</li>
+                <li>Leading data migration projects to solve poor computing performance and data loss with auto tools.</li>
+              </ol>
+              <li class="bi bi-journal-bookmark list-unstyled"><i class="me-2"></i>Notable Experience:</li>
+              <ul>
+                <li style="list-style-type: square;">
+                  Implement automation for boosting daily operation efficiency with CI/CD:
+                  <ol>
+                    <li>Upgrade 480 x86 servers’ firmware & driver for solving WAL file corruption, which has impacted wafer production severely, in 2.5 weeks (10 days) instead of 2 months. </li>
+                    <li>Design CyberArk security plugin for numerous brands (HP, Dell, Supermicro, Lenovo) of x86 servers to improve the credential success rate of CyberArk management from 24% to 85%</li>
+                    <li>Design x86 server auto disk maintenance for vSAN with disk removal, disk reclaim, and disk group build up to decrease maintenance time by reducing human intervention.</li>
+                    <li>Develop several auto tools for daily operation and emergencies: VM rebalance, server sanity check, server installation config, etc.</li>
+                  </ol>
+                </li>
+
+                <li style="list-style-type: square;">
+                  VMware architecture design, installation, operation, event handling and performance optimization for Fab Cloud Service and Big Data Application Service built up in Giga Fab:
+                  <ol>
+                    <li>Implement and optimize VMware cluster automation such as VM provision, network config, password management to fulfill massive Fab construction requests.</li>
+                    <li>Construct 30+ VMware eco-system and provide valuable insight into performance analysis for better operation quality in H/M/T-sites and overseas factories (AZ & China).</li>
+                  </ol>
+                </li>
+
+                <li style="list-style-type: square;">
+                  In charge of NAS (NetApp & Isilon) management and operation:
+                  <ol>
+                    <li>Lead Data migration from different NAS for HDFS and NFS separation to solve poor computing and data loss by implementing automation methods to reduce time from 1months to 1.5 weeks (6 days).</li>
+                    <li>Transform Big Data storage infrastructure from spine-leaf to central-controlled design to prevent split-brain by implementing Isilon NAS migration and performance tuning.</li>
+                  </ol>
+                </li>
+
+                <li style="list-style-type: square;">
+                  Participate in Big Data Hadoop service operation and event support for Fab data analysis:
+                  <ol>
+                    <li>Transform entire Big Data structure from Cloudera to Apache platform by creating 3000+ VM with auto tools and performance optimization such as datastore I/O latency control.</li>
+                  </ol>
+                </li>
+              </ul>
+              </ul>
+          </div>
+
+          <div class="mb-4">
+            <strong class="job-title">Research Assistant</strong>, National Cheng Kung University , Aug.2019 – Jun.2020
+
+            <li class="list-unstyled tools-line">
+              <i class="bi bi-tools me-2"></i><strong>Tools&Skills：</strong>
+              Python, Seaborn, Matplotlib, pyTorch, TensorFlow, BeautifulSoup, Scikit-Learn.
+            </li>
+            <ul>
+              <ol>
+                <li>Using fuzzy-based grey model to extract behavior from short-term time series data and improving the randomness of forecasting by computing weight of each grey model.</li>
+                <li>Cooperating with professor and PhD students to run the experiment and discussing the results of it.</li>
+              </ol>
+            </ul>
+          </div>
+
+
+          <div class="mb-4">
+            <strong class="job-title">Teaching Assistant</strong>, National Cheng Kung University , Jan.2019 – Jan.2020
+
+            <li class="list-unstyled tools-line">
+              <i class="bi bi-tools me-2"></i><strong>Tools&Skills：</strong>
+              Communication skill, Problem-solving skill.
+            </li>
+            <ul>
+              <ol>
+                <li>Teach students if they have any problems with management and give them some advice regarding further studies</li>
+                <li>Supporting students regarding leadership through my feedback on their homework.</li>
+              </ol>
+            </ul>
+          </div>
+
+          <div class="mb-4">
+            <strong class="job-title">Internship</strong>, NEUX Company , Jul.2018 – Aug.2018
+
+            <li class="list-unstyled tools-line">
+              <i class="bi bi-tools me-2"></i><strong>Tools&Skills：</strong>
+              PowerBI, Communication skill, Problem-solving skill, Presentation skill.
+            </li>
+            <ul>
+              <ol>
+                <li>Conducting practical ideas to improve information architecture of mobile pages and Apps</li>
+                <li>Consulting the demands of clients and making information architecture much easier to navigate</li>
+              </ol>
+            </ul>
+          </div>
+
+
+          <div class="mb-4">
+            <strong class="job-title">Web design (side project)</strong>, Fresh Taiwan, Sept.2016 – Oct.2016
+
+            <li class="list-unstyled tools-line">
+              <i class="bi bi-tools me-2"></i><strong>Tools&Skills：</strong>
+              JavaScript, Bootstrap.
+            </li>
+            <ul>
+              <ol>
+                <li>Constructing webpage for introducing new product models.</li>
+                <li>Trying to match the expectations of the owner by searching for his demands through meeting.</li>
+              </ol>
+            </ul>
+          </div>
+
+          <div class="mb-4">
+            <strong class="job-title">English Assistant</strong>, Gloria Institution, Jul.2016 – Aug.2016
+
+            <li class="list-unstyled tools-line">
+              <i class="bi bi-tools me-2"></i><strong>Tools&Skills：</strong>
+              English, Communication skill, Problem-solving skill.
+            </li>
+            <ul>
+              <ol>
+                <li>Constructing webpage for introducing new product models.</li>
+                <li>Trying to match the expectations of the owner by searching for his demands through meeting.</li>
+              </ol>
+            </ul>
+          </div>
 
         <!-- ✅ Publication -->
         <section id="publication" class="mb-5">
@@ -270,7 +395,7 @@
         </section>
 
         <footer class="text-center text-muted mt-5">
-          &copy; 2025 Hank Hsu．Bootstrap + GitHub Pages 製作
+          &copy; 2025 Hank Hsu．Powered by GitHub
         </footer>
       </main>
 
@@ -278,12 +403,14 @@
       <aside class="col-md-3 d-none d-md-block">
         <nav id="sidebar-nav" class="nav flex-column text-end">
           <span class="fw-bold mb-2"><i class="bi bi-file-richtext-fill me-2"></i>BookMarks</span>
+          <a class="nav-link" href="#Facts about me">Facts about me</a>
           <a class="nav-link" href="#contact">Contact Info</a>
           <a class="nav-link" href="#skills">Professional Highlight</a>
           <a class="nav-link" href="#education">Education</a>
           <a class="nav-link" href="#experience">Professional Experience</a>
           <a class="nav-link" href="#publication">Publication</a>
           <a class="nav-link" href="#competition">Competition</a>
+          <button class="btn btn-outline-secondary position-absolute top-0 end-0 m-3" id="themeToggleBtn">🌙</button>
         </nav>
       </aside>
     </div>
@@ -308,6 +435,9 @@
       localStorage.setItem('theme', newTheme);
       themeToggleBtn.textContent = newTheme === 'dark' ? '🌞' : '🌙';
     });
+      window.onload = function() {
+    window.scrollTo(0, 0);
+  };
   </script>
 </body>
 </html>
