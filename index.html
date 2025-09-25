@@ -435,6 +435,9 @@ header .avatar {
       localStorage.setItem('theme', newTheme);
       themeToggleBtn.textContent = newTheme === 'dark' ? '🌞' : '🌙';
     });
+      window.onload = function() {
+    window.scrollTo(0, 0);
+  };
   </script>
 </body>
 </html>
