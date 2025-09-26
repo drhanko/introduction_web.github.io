@@ -3,144 +3,536 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hank Hsu Website</title>
+  <title>Hank Hsu - IT/OT Engineer & AI Data Enthusiast</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <style>
+    :root {
+      --primary-color: #0d6efd;
+      --secondary-color: #6c757d;
+      --accent-color: #20c997;
+      --light-bg: #f8f9fa;
+      --dark-bg: #212529;
+    }
+    
     body {
       position: relative;
       padding-top: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      transition: all 0.3s ease;
     }
-.banner {
-  background: url('image/0B7A1926.JPG') center/cover;
-  height: 200px;
-  border-radius: 0.75rem;
-  margin-bottom: 80px;   /* Banner 底部間距，留給頭貼 */
-  position: relative;
-}
-
-header .avatar {
-  position: relative;      /* 讓 z-index 生效 */
-  z-index: 10;             /* 一定要比 banner 高 */
-  margin-top: -90px;       /* 往上浮出 banner */
-  border: 5px solid #fff;  /* 白框讓邊緣更清楚 */
-  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
-  background-color: #fff;  /* 如果圖片有透明邊，可以避免被背景透出 */
-}
+    
+    .banner {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('image/0B7A1926.JPG') center/cover;
+      height: 250px;
+      border-radius: 0.75rem;
+      margin-bottom: 100px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .banner-content {
+      text-align: center;
+      z-index: 2;
+    }
+    
+    header .avatar {
+      position: relative;
+      z-index: 10;
+      margin-top: -100px;
+      border: 5px solid #fff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+      background-color: #fff;
+      transition: transform 0.3s ease;
+    }
+    
+    header .avatar:hover {
+      transform: scale(1.05);
+    }
+    
     .avatar {
       width: 150px;
       height: 150px;
       border-radius: 50%;
       object-fit: cover;
-      border: 5px solid white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
+    
     .section-title {
-      border-bottom: 2px solid #0d6efd;
+      border-bottom: 3px solid var(--primary-color);
       display: inline-block;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      font-weight: 600;
     }
-
-    /* ===== Experience Section 強調樣式 ===== */
-#experience .job-title {
-  font-size: 1.3rem;       /* 稍微放大職稱 */
-  font-weight: 700;        /* 粗體 */
-  margin-bottom: 0.5rem;   /* 與 Tools 間距 */
-  color: #0d6efd;          /* USC藍 or Bootstrap 主色 */
-}
-
-#experience .tools-line {
-  margin: 0.5rem 0 1rem 0; /* 與上、下段落的空隙 */
-  padding: 0.5rem 0.75rem; /* 內邊距 */
-  background-color: #f8f9fa;  /* 淡灰底色 */
-  border-left: 4px solid #0d6efd; /* 左側藍線強調 */
-  border-radius: 0.25rem;
-  font-weight: 600;
-}
-
-/* 右側導覽列固定，但起點在 Banner 下方 */
-#sidebar-nav {
-  position: sticky;
-  top: 220px;            /* ✅200px banner + 20px 預留空間 */
-}
+    
+    #experience .job-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+    }
+    
+    #experience .tools-line {
+      margin: 0.5rem 0 1rem 0;
+      padding: 0.5rem 0.75rem;
+      background-color: var(--light-bg);
+      border-left: 4px solid var(--primary-color);
+      border-radius: 0.25rem;
+      font-weight: 600;
+    }
+    
+    #sidebar-nav {
+      position: sticky;
+      top: 220px;
+    }
+    
+    .nav-link {
+      transition: all 0.2s ease;
+      border-radius: 0.25rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      background-color: var(--light-bg);
+      color: var(--primary-color) !important;
+    }
+    
+    .skill-category {
+      margin-bottom: 2rem;
+    }
+    
+    /* 技術技能優化樣式 */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    
+    .skill-item {
+      background: var(--light-bg);
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      border-left: 4px solid var(--primary-color);
+      transition: all 0.3s ease;
+    }
+    
+    .skill-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .skill-category-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    
+    .skill-tag {
+      background: white;
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
+      padding: 0.25rem 0.5rem;
+      border-radius: 1rem;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+    
+    .skill-tag:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+    
+    /* 項目經驗優化樣式 */
+    .project-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .stat-card {
+      background: linear-gradient(135deg, var(--primary-color), #0a58ca);
+      color: white;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+    }
+    
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    .project-details {
+      background: var(--light-bg);
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      border-left: 5px solid var(--accent-color);
+    }
+    
+    .project-highlight {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background-color: var(--primary-color);
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.5rem;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      border: 2px solid white;
+    }
+    
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      margin-bottom: 1.5rem;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+    
+    .badge-custom {
+      background-color: var(--accent-color);
+      color: white;
+    }
+    
+    .floating-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    
+    @media (max-width: 768px) {
+      .banner {
+        height: 200px;
+        margin-bottom: 80px;
+      }
+      
+      header .avatar {
+        margin-top: -80px;
+      }
+      
+      #sidebar-nav {
+        display: none;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .project-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    [data-bs-theme="dark"] {
+      --light-bg: #343a40;
+    }
+    
+    [data-bs-theme="dark"] .card {
+      background-color: #2d3035;
+      color: #e9ecef;
+    }
+    
+    [data-bs-theme="dark"] .tools-line {
+      background-color: #495057;
+    }
+    
+    [data-bs-theme="dark"] .skill-item {
+      background: #495057;
+    }
+    
+    [data-bs-theme="dark"] .skill-tag {
+      background: #343a40;
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+    }
+    
+    [data-bs-theme="dark"] .skill-tag:hover {
+      background: var(--accent-color);
+      color: #343a40;
+    }
   </style>
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#sidebar-nav" data-bs-offset="100" tabindex="0">
-  <!-- 暗黑模式切換 -->
-
-  <!-- Banner (僅背景) -->
-  <div class="banner"></div>
+  <!-- Banner -->
+  <div class="banner">
+    <div class="banner-content">
+      <h2 class="display-6">IT Engineer | OT Engineer | AI Data Enthusiast</h2>
+      <p class="lead">5+ years in semiconductor industry</p>
+    </div>
+  </div>
 
   <div class="container py-4">
     <div class="row">
-      <!-- ===== 左側主要內容 ===== -->
+      <!-- 左側主要內容 -->
       <main class="col-md-9">
-        <!-- ✅ 頭貼與名字對齊 -->
+        <!-- 頭貼與名字 -->
         <header class="text-center mb-5">
           <div class="d-flex flex-column align-items-center">
-            <img src="image/self_photo.jpeg" alt="頭貼" class="avatar mb-3" />
-            <h1 class="fw-bold">Hank Hsu</h1>
-            <p class="lead">IT Engineer | OT Engineer | AI Data Enthusiast</p>
+            <img src="image/self_photo.jpeg" alt="Hank Hsu" class="avatar mb-3" />
+            <h1 class="fw-bold display-5">Hank Hsu</h1>
+            <p class="lead fs-4">Passionate about technology innovation and data-driven solutions</p>
+            <div class="mt-2">
+              <span class="badge bg-primary me-2">IT Infrastructure</span>
+              <span class="badge bg-success me-2">OT Systems</span>
+              <span class="badge bg-info me-2">Data Science</span>
+              <span class="badge bg-warning">Project Management</span>
+            </div>
           </div>
         </header>
-        <!-- Contact Info -->
+
+        <!-- Facts about me -->
         <section id="Facts about me" class="mb-5">
           <h2 class="section-title"><i class="bi bi-person-arms-up me-2"></i>Facts about me</h2>
-          <ol>
-            <li>I am an IT/OT Engineer with 5 years of experience in the semiconductor industry, currently starting to explore the effectiveness of applied data science. </li>
-            <li>Outside of work, I am interested in badminton, wild adventure, and the art of movies.</li>
-          </ol>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h5 class="card-title"><i class="bi bi-briefcase me-2"></i>Professional</h5>
+                  <p class="card-text">IT/OT Engineer with 5 years of experience in the semiconductor industry, currently exploring the effectiveness of applied data science.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h5 class="card-title"><i class="bi bi-heart me-2"></i>Personal Interests</h5>
+                  <p class="card-text">Outside of work, I enjoy badminton, outdoor adventures, and analyzing the art of cinema.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         <!-- Contact Info -->
         <section id="contact" class="mb-5">
           <h2 class="section-title"><i class="bi bi-envelope-plus-fill me-2"></i>Contact Info</h2>
-          <ul class="list-unstyled">
-            <li><strong>Email：</strong> godhanko@gmail.com</li>
-            <li><strong>LinkedIn：</strong>
-              <a href="https://www.linkedin.com/in/hank-hsu-59a181181/" target="_blank">Hank Hsu</a>
-            </li>
-          </ul>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="d-flex align-items-center mb-3">
+                <i class="bi bi-envelope-fill me-3 fs-4 text-primary"></i>
+                <div>
+                  <h5 class="mb-0">Email</h5>
+                  <a href="mailto:godhanko@gmail.com" class="text-decoration-none">godhanko@gmail.com</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex align-items-center mb-3">
+                <i class="bi bi-linkedin me-3 fs-4 text-primary"></i>
+                <div>
+                  <h5 class="mb-0">LinkedIn</h5>
+                  <a href="https://www.linkedin.com/in/hank-hsu-59a181181/" target="_blank" class="text-decoration-none">Hank Hsu</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         <!-- Professional Highlight -->
         <section id="skills" class="mb-5">
-          <h2 class="section-title"><i class="bi bi-lightbulb-fill me-2"></i>Professional Highlight</h2>
-          <ul class="list-unstyled">
-            <li><i class="bi bi-tools me-2"></i>Technical Skills
-              <ul>
-                <li>VMware architecture knowledge: VMware eco-system management and optimization.</li>
-                <li>Operation Hardware Management: Linux OS based technique, x86 servermanagement, NAS management, Ignition SCADA system management, Tenable OT,HighByte.</li>
-                <li>Code technique: Python, Java, SQL(MySQL), PowerShell, Bash.</li>
-                <li>Big Data Infrastructure and Machine learning knowledges: Hadoop, TensorFlow,pyTorch, BeautifulSoup, Scikit-Learn.</li>
-                <li>Data Visualization: Seaborn, Matplotlib, Tableau, PowerBI.</li>
-                <li>Other: Git.</li>
-              </ul>
-            </li>
-            <li><i class="bi bi-graph-up me-2"></i>Project/Experience Summary
-              <ul>
-                <li>30+ VMware design and installation projects for Big Data and Fab services.</li>
-                <li>10+ NAS storage cluster built-up projects for Big Data Hadoop solution.</li>
-                <li>10+ Auto tool development for daily operation and emergency to boost working efficiency.</li>
-                <li>20+ Ignition ecosystem optimization of KSP factory for improving operation efficiency.</li>
-                <li>Leading the Ignition Node Critical Extension Project, which aims to solve a serious performance issue and has never been done at Entegris before.</li>
-                <li>10+ HighByte IT/OT dataflow configuration projects</li>
-              </ul>
-            </li>
-            <li><i class="bi bi-people-fill me-2"></i>Soft Skills
-              <ul>
-                <li>Project management: leading and coordinating IT/OT projects.</li>
-                <li>Problem solving mindset: create automation to improve quality and reduce duration.</li>
-                <li>Cross-functional communication with continuous information sync.</li>
-              </ul>
-            </li>
-          </ul>
+          <h2 class="section-title"><i class="bi bi-lightbulb-fill me-2"></i>Professional Highlights</h2>
+          
+          <!-- Technical Skills 優化版 -->
+          <div class="skill-category">
+            <h4 class="mb-3"><i class="bi bi-tools text-primary me-2"></i>Technical Skills</h4>
+            <div class="skills-grid">
+              <div class="skill-item">
+                <div class="skill-category-title">
+                  <i class="bi bi-code-slash"></i>
+                  <span>Programming & Scripting</span>
+                </div>
+                <p>Python, Java, SQL(MySQL), PowerShell, Bash</p>
+                <div class="skill-tags">
+                  <span class="skill-tag">Python</span>
+                  <span class="skill-tag">Java</span>
+                  <span class="skill-tag">SQL</span>
+                  <span class="skill-tag">PowerShell</span>
+                  <span class="skill-tag">Bash</span>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-category-title">
+                  <i class="bi bi-cpu"></i>
+                  <span>Infrastructure & Hardware</span>
+                </div>
+                <p>Linux OS, x86 server management, NAS management, VMware ecosystem</p>
+                <div class="skill-tags">
+                  <span class="skill-tag">Linux</span>
+                  <span class="skill-tag">x86 Servers</span>
+                  <span class="skill-tag">NAS</span>
+                  <span class="skill-tag">VMware</span>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-category-title">
+                  <i class="bi bi-diagram-3"></i>
+                  <span>OT & Industrial Systems</span>
+                </div>
+                <p>Ignition SCADA system management, Tenable OT, HighByte</p>
+                <div class="skill-tags">
+                  <span class="skill-tag">Ignition SCADA</span>
+                  <span class="skill-tag">Tenable OT</span>
+                  <span class="skill-tag">HighByte</span>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-category-title">
+                  <i class="bi bi-graph-up-arrow"></i>
+                  <span>Data Science & Analytics</span>
+                </div>
+                <p>Hadoop, TensorFlow, PyTorch, BeautifulSoup, Scikit-Learn</p>
+                <div class="skill-tags">
+                  <span class="skill-tag">Hadoop</span>
+                  <span class="skill-tag">TensorFlow</span>
+                  <span class="skill-tag">PyTorch</span>
+                  <span class="skill-tag">Scikit-Learn</span>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-category-title">
+                  <i class="bi bi-bar-chart"></i>
+                  <span>Data Visualization</span>
+                </div>
+                <p>Seaborn, Matplotlib, Tableau, PowerBI</p>
+                <div class="skill-tags">
+                  <span class="skill-tag">Seaborn</span>
+                  <span class="skill-tag">Matplotlib</span>
+                  <span class="skill-tag">Tableau</span>
+                  <span class="skill-tag">PowerBI</span>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-category-title">
+                  <i class="bi bi-gear"></i>
+                  <span>Other Tools</span>
+                </div>
+                <p>Version control and collaboration tools</p>
+                <div class="skill-tags">
+                  <span class="skill-tag">Git</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Project Experience 優化版 -->
+          <div class="skill-category">
+            <h4 class="mb-3"><i class="bi bi-graph-up text-success me-2"></i>Project Experience Summary</h4>
+            
+            <div class="project-stats">
+              <div class="stat-card">
+                <div class="stat-number">30+</div>
+                <div class="stat-label">VMware Design & Installation Projects</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Ignition Ecosystem Optimizations</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">NAS Storage Cluster Projects</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Automation Tool Developments</div>
+              </div>
+            </div>
+            
+            <div class="project-details">
+              <p class="project-highlight"><i class="bi bi-star-fill text-warning me-2"></i>Key Leadership Experience:</p>
+              <p>Leading the Ignition Node Critical Extension Project, which aims to solve a serious performance issue and has never been done at Entegris before.</p>
+              
+              <p class="project-highlight mt-3"><i class="bi bi-lightning-charge-fill text-info me-2"></i>Additional Achievements:</p>
+              <p>10+ HighByte IT/OT dataflow configuration projects for Big Data Hadoop solution and operational efficiency improvement.</p>
+            </div>
+          </div>
+            
+            <div class="col-md-4 skill-category">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h5 class="card-title"><i class="bi bi-people-fill me-2"></i>Soft Skills</h5>
+                  <ul>
+                    <li>Project management and team leadership</li>
+                    <li>Problem-solving and automation mindset</li>
+                    <li>Cross-functional communication</li>
+                    <li>Continuous improvement focus</li>
+                    <li>Technical documentation</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
-        <!-- Education -->
+             <!-- Education -->
         <section id="education" class="mb-5">
           <h2 class="section-title"><i class="bi bi-book-fill me-2"></i>Education</h2>
           <div class="accordion" id="eduAccordion">
@@ -206,238 +598,362 @@ header .avatar {
         <section id="experience" class="mb-5">
           <h2 class="section-title"><i class="bi bi-briefcase-fill me-2"></i>Professional Experience</h2>
           
-          <div class="mb-4">
-            <strong class="job-title">Operational Technology Engineer</strong>, Entegris, Inc. , Oct.2023 – Jun.2025
-
-            <li class="list-unstyled tools-line">
-              <i class="bi bi-tools me-2"></i><strong>Tools&Skills：</strong>
-              Ignition SCADA, Python, Java, SQL, HighByte Intelligence Hub, Tenable OT, CyberArk, PowerBI, Cross-functional communication skill, Problem solving mindset, Project management.
-            </li>
-            <ul>
-              <li class="bi bi-brightness-high list-unstyled"><i class="me-2"></i>Key Achievement:</li>
-              <ol type="a">
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start">
+                <strong class="job-title">Operational Technology Engineer</strong>
+                <span class="badge bg-primary">Oct 2023 – Jun 2025</span>
+              </div>
+              <p class="text-muted">Entegris, Inc.</p>
+              
+              <div class="tools-line">
+                <i class="bi bi-tools me-2"></i><strong>Tools & Skills:</strong>
+                Ignition SCADA, Python, Java, SQL, HighByte Intelligence Hub, Tenable OT, CyberArk, PowerBI, Cross-functional Communication, Problem-solving, Project management.
+              </div>
+              
+              <h6 class="mt-3"><i class="bi bi-brightness-high me-2"></i>Key Achievements:</h6>
+              <ul>
                 <li>Experienced with Ignition SCADA and IEC 62443 standard to optimize system architecture and design system standards for KSP.</li>
                 <li>Leading projects to solve KSP Ignition performance issues from constant stuttering to well performance.</li>
                 <li>Experienced with global operations which design and implement new methods, such as customized HighByte projects and Cybersecurity architecture improvement, to enhance KSP operation efficiency and security.</li>
-              </ol>
-              <li class="bi bi-journal-bookmark list-unstyled"><i class="me-2"></i>Notable Experience:</li>
+              </ul>
+              
+              <h6><i class="bi bi-journal-bookmark me-2"></i>Notable Experience:</h6>
               <ul>
-                <li style="list-style-type: square;">Participate in the implementation of SCADA & Cybersecurity architecture in KSP:</li>
+                <li>Participate in the implementation of SCADA & Cybersecurity architecture in KSP:</li>
                 <ol>
-                  <li>Coordinate and participate in 20+ Ignition ecosystem optimization (EX. HMI layout design, Tag binding & Script editing) of factory equipment with PE, Operation & IT team for improving operation efficiency.</li>
-                  <li>Leading Ignition node extension project, which cooperated with global IT team and PE team, for improving the system effectiveness from constant stuttering and poor availability to stable performance.</li>
-                  <li>Wrapping up the robust cybersecurity implementation, such as Tenable O.T and CyberArk, abides by the IEC 62443 standard with Cybersecurity and IT experts in the USA and Malaysia.</li>
-                  <li>Implementing 10+ Customized HighByte projects, which are for LIMS and IQC systems to exchange information between IT & OT layers with protection, to fulfill the demands of the LAB & Quality team.</li>
+                <li>Coordinate and participate in 20+ Ignition ecosystem optimization (EX. HMI layout design, Tag binding & Script editing) of factory equipment with PE, Operation & IT team for improving operation efficiency.</li>
+                <li>Leading Ignition node extension project, which cooperated with global IT team and PE team, for improving the system effectiveness from constant stuttering and poor availability to stable performance.</li>
+                <li>rapping up the robust cybersecurity implementation, such as Tenable O.T and CyberArk, abides by the IEC 62443 standard with Cybersecurity and IT experts in the USA and Malaysia.</li>
+                <li>Implementing 10+ Customized HighByte projects, which are for LIMS and IQC systems to exchange information between IT & OT layers with protection, to fulfill the demands of the LAB & Quality team.</li>
                 </ol>
               </ul>
-            </ul>
+            </div>
           </div>
 
-          <div class="mb-4">
-            <strong class="job-title">Information Technology Engineer</strong>, TSMC , Sep.2020 – Oct.2023
-
-            <li class="list-unstyled tools-line">
-              <i class="bi bi-tools me-2"></i><strong>Tools&Skills：</strong>
-              Python, Java, SQL, PowerShell, Bash, Linux, Git, Hadoop, VMware, NAS(Dell Isilon,NetApp), x86 servers(HP,Supermicro,Dell,Lenovo), CyberArk, Tableau, PowerBI, Cross-functional communication skill, Problem solving mindset, Project management.
-            </li>
-            <ul>
-              <li class="bi bi-brightness-high list-unstyled"><i class="me-2"></i>Key Achievement:</li>
-              <ol type="a">
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start">
+                <strong class="job-title">Information Technology Engineer</strong>
+                <span class="badge bg-primary">Sep 2020 – Oct 2023</span>
+              </div>
+              <p class="text-muted">TSMC</p>
+              
+              <div class="tools-line">
+                <i class="bi bi-tools me-2"></i><strong>Tools & Skills:</strong>
+                Python, Java, SQL, PowerShell, Bash, Linux, Git, Hadoop, VMware, NAS(Dell Isilon,NetApp), x86 servers(HP,Supermicro,Dell,Lenovo), CyberArk, Tableau, PowerBI, Cross-functional Communication, Problem-solving, Project management.
+              </div>
+              
+              <h6 class="mt-3"><i class="bi bi-brightness-high me-2"></i>Key Achievements:</h6>
+              <ul>
                 <li>Experienced with BigData, VMware, NAS management and x86 knowledge to develop automation to optimize the system performance with dramatic improvement and reduce implementation time.</li>
                 <li>Specialized in dealing with TSMC BigData architecture which is one of the largest and most complicated computing clusters in the world.</li>
                 <li>Leading data migration projects to solve poor computing performance and data loss with auto tools.</li>
-              </ol>
-              <li class="bi bi-journal-bookmark list-unstyled"><i class="me-2"></i>Notable Experience:</li>
+              </ul>
+              
+              <h6><i class="bi bi-journal-bookmark me-2"></i>Notable Experience:</h6>
               <ul>
-                <li style="list-style-type: square;">
-                  Implement automation for boosting daily operation efficiency with CI/CD:
-                  <ol>
-                    <li>Upgrade 480 x86 servers’ firmware & driver for solving WAL file corruption, which has impacted wafer production severely, in 2.5 weeks (10 days) instead of 2 months. </li>
-                    <li>Design CyberArk security plugin for numerous brands (HP, Dell, Supermicro, Lenovo) of x86 servers to improve the credential success rate of CyberArk management from 24% to 85%</li>
-                    <li>Design x86 server auto disk maintenance for vSAN with disk removal, disk reclaim, and disk group build up to decrease maintenance time by reducing human intervention.</li>
-                    <li>Develop several auto tools for daily operation and emergencies: VM rebalance, server sanity check, server installation config, etc.</li>
-                  </ol>
-                </li>
-
-                <li style="list-style-type: square;">
-                  VMware architecture design, installation, operation, event handling and performance optimization for Fab Cloud Service and Big Data Application Service built up in Giga Fab:
-                  <ol>
-                    <li>Implement and optimize VMware cluster automation such as VM provision, network config, password management to fulfill massive Fab construction requests.</li>
-                    <li>Construct 30+ VMware eco-system and provide valuable insight into performance analysis for better operation quality in H/M/T-sites and overseas factories (AZ & China).</li>
-                  </ol>
-                </li>
-
-                <li style="list-style-type: square;">
-                  In charge of NAS (NetApp & Isilon) management and operation:
-                  <ol>
-                    <li>Lead Data migration from different NAS for HDFS and NFS separation to solve poor computing and data loss by implementing automation methods to reduce time from 1months to 1.5 weeks (6 days).</li>
-                    <li>Transform Big Data storage infrastructure from spine-leaf to central-controlled design to prevent split-brain by implementing Isilon NAS migration and performance tuning.</li>
-                  </ol>
-                </li>
-
-                <li style="list-style-type: square;">
-                  Participate in Big Data Hadoop service operation and event support for Fab data analysis:
-                  <ol>
-                    <li>Transform entire Big Data structure from Cloudera to Apache platform by creating 3000+ VM with auto tools and performance optimization such as datastore I/O latency control.</li>
-                  </ol>
-                </li>
+                <li>Implement automation for boosting daily operation efficiency with CI/CD:</li>
+                <ol>
+                  <li>Upgrade 480 x86 servers’ firmware & driver for solving WAL file corruption, which has impacted wafer production severely, in 2.5 weeks (10 days) instead of 2 months. </li>
+                  <li>Design CyberArk security plugin for numerous brands (HP, Dell, Supermicro, Lenovo) of x86 servers to improve the credential success rate of CyberArk management from 24% to 85%</li>
+                  <li>Design x86 server auto disk maintenance for vSAN with disk removal, disk reclaim, and disk group build up to decrease maintenance time by reducing human intervention.</li>
+                  <li>Develop several auto tools for daily operation and emergencies: VM rebalance, server sanity check, server installation config, etc.</li>
+                </ol>
+                <li>VMware architecture design, installation, operation, event handling and performance optimization for Fab Cloud Service and Big Data Application Service built up in Giga Fab:</li>
+                <ol>
+                  <li>Implement and optimize VMware cluster automation such as VM provision, network config, password management to fulfill massive Fab construction requests.</li>
+                  <li>Construct 30+ VMware eco-system and provide valuable insight into performance analysis for better operation quality in H/M/T-sites and overseas factories (AZ & China).</li>
+                </ol>
+                <li>In charge of NAS (NetApp & Isilon) management and operation:</li>
+                <ol>
+                  <li>Lead Data migration from different NAS for HDFS and NFS separation to solve poor computing and data loss by implementing automation methods to reduce time from 1months to 1.5 weeks (6 days).</li>
+                  <li>Transform Big Data storage infrastructure from spine-leaf to central-controlled design to prevent split-brain by implementing Isilon NAS migration and performance tuning.</li>
+                </ol>
+                <li>Participate in Big Data Hadoop service operation and event support for Fab data analysis:</li>
+                <ol>
+                  <li>Transform entire Big Data structure from Cloudera to Apache platform by creating 3000+ VM with auto tools and performance optimization such as datastore I/O latency control.</li>
+                </ol>
               </ul>
-              </ul>
+            </div>
           </div>
 
-          <div class="mb-4">
-            <strong class="job-title">Research Assistant</strong>, National Cheng Kung University , Aug.2019 – Jun.2020
-
-            <li class="list-unstyled tools-line">
-              <i class="bi bi-tools me-2"></i><strong>Tools&Skills：</strong>
-              Python, Seaborn, Matplotlib, pyTorch, TensorFlow, BeautifulSoup, Scikit-Learn.
-            </li>
-            <ul>
-              <ol>
-                <li>Using fuzzy-based grey model to extract behavior from short-term time series data and improving the randomness of forecasting by computing weight of each grey model.</li>
-                <li>Cooperating with professor and PhD students to run the experiment and discussing the results of it.</li>
-              </ol>
-            </ul>
+          <!-- 其他经历卡片式展示 -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <strong class="job-title">Research Assistant</strong>
+                    <span class="badge bg-secondary">Aug 2019 – Jun 2020</span>
+                  </div>
+                  <p class="text-muted">National Cheng Kung University</p>
+                  
+                  <div class="tools-line">
+                    <i class="bi bi-tools me-2"></i><strong>Tools & Skills:</strong>
+                    Python, Seaborn, Matplotlib, pyTorch, TensorFlow, BeautifulSoup, Scikit-Learn.
+                  </div>
+                  
+                  <ul>
+                    <li>Used fuzzy-based grey model to extract behavior from short-term time series data</li>
+                    <li>Cooperated with professors and PhD students on experiments</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <strong class="job-title">Teaching Assistant</strong>
+                    <span class="badge bg-secondary">Jan 2019 – Jan 2020</span>
+                  </div>
+                  <p class="text-muted">National Cheng Kung University</p>
+                  
+                  <div class="tools-line">
+                    <i class="bi bi-tools me-2"></i><strong>Tools & Skills:</strong>
+                    Communication, Problem-solving.
+                  </div>
+                  
+                  <ul>
+                    <li>Supported students with management problems and academic advice</li>
+                    <li>Provided feedback on homework to develop leadership skills</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
 
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <strong class="job-title">Internship</strong>
+                    <span class="badge bg-secondary">Jul.2018 – Aug.2018</span>
+                  </div>
+                  <p class="text-muted">NEUX Company</p>
+                  
+                  <div class="tools-line">
+                    <i class="bi bi-tools me-2"></i><strong>Tools & Skills:</strong>
+                    PowerBI, Communication, Problem-solving, Presentation.
+                  </div>
+                  
+                  <ul>
+                    <li>Conducting practical ideas to improve information architecture of mobile pages and Apps</li>
+                    <li>Consulting the demands of clients and making information architecture much easier to navigate</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
-          <div class="mb-4">
-            <strong class="job-title">Teaching Assistant</strong>, National Cheng Kung University , Jan.2019 – Jan.2020
 
-            <li class="list-unstyled tools-line">
-              <i class="bi bi-tools me-2"></i><strong>Tools&Skills：</strong>
-              Communication skill, Problem-solving skill.
-            </li>
-            <ul>
-              <ol>
-                <li>Teach students if they have any problems with management and give them some advice regarding further studies</li>
-                <li>Supporting students regarding leadership through my feedback on their homework.</li>
-              </ol>
-            </ul>
+            <div class="col-md-6">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <strong class="job-title">Web design (side project) </strong>
+                    <span class="badge bg-secondary">Sept.2016 – Oct.2016 </span>
+                  </div>
+                  <p class="text-muted">Fresh Taiwan</p>
+                  
+                  <div class="tools-line">
+                    <i class="bi bi-tools me-2"></i><strong>Tools & Skills:</strong>
+                    JavaScript, Bootstrap.
+                  </div>
+                  
+                  <ul>
+                    <li>Constructing webpage for introducing new product models.</li>
+                    <li>Trying to match the expectations of the owner by searching for his demands through meeting.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
+          
+          <div class="row">
+           <div class="col-md-6">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <strong class="job-title">English assistant  </strong>
+                    <span class="badge bg-secondary">Jul.2016 – Aug.2016</span>
+                  </div>
+                  <p class="text-muted">Gloria Institution</p>
+                  
+                  <div class="tools-line">
+                    <i class="bi bi-tools me-2"></i><strong>Tools & Skills:</strong>
+                    English, Communication, Problem-solving.
+                  </div>
+                  <ul>
+                    <li>I worked with foreign teachers to create good learning surroundings for students</li>
+                    <li>Supporting students with their English problems, such as spelling and grammar errors.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div> 
+        </section>
 
-          <div class="mb-4">
-            <strong class="job-title">Internship</strong>, NEUX Company , Jul.2018 – Aug.2018
-
-            <li class="list-unstyled tools-line">
-              <i class="bi bi-tools me-2"></i><strong>Tools&Skills：</strong>
-              PowerBI, Communication skill, Problem-solving skill, Presentation skill.
-            </li>
-            <ul>
-              <ol>
-                <li>Conducting practical ideas to improve information architecture of mobile pages and Apps</li>
-                <li>Consulting the demands of clients and making information architecture much easier to navigate</li>
-              </ol>
-            </ul>
-          </div>
-
-
-          <div class="mb-4">
-            <strong class="job-title">Web design (side project)</strong>, Fresh Taiwan, Sept.2016 – Oct.2016
-
-            <li class="list-unstyled tools-line">
-              <i class="bi bi-tools me-2"></i><strong>Tools&Skills：</strong>
-              JavaScript, Bootstrap.
-            </li>
-            <ul>
-              <ol>
-                <li>Constructing webpage for introducing new product models.</li>
-                <li>Trying to match the expectations of the owner by searching for his demands through meeting.</li>
-              </ol>
-            </ul>
-          </div>
-
-          <div class="mb-4">
-            <strong class="job-title">English Assistant</strong>, Gloria Institution, Jul.2016 – Aug.2016
-
-            <li class="list-unstyled tools-line">
-              <i class="bi bi-tools me-2"></i><strong>Tools&Skills：</strong>
-              English, Communication skill, Problem-solving skill.
-            </li>
-            <ul>
-              <ol>
-                <li>Constructing webpage for introducing new product models.</li>
-                <li>Trying to match the expectations of the owner by searching for his demands through meeting.</li>
-              </ol>
-            </ul>
-          </div>
-
-        <!-- ✅ Publication -->
+        <!-- Publication -->
         <section id="publication" class="mb-5">
           <h2 class="section-title"><i class="bi bi-journal-text me-2"></i>Publication</h2>
-          <ul class="list-unstyled">
-            <li><i class="bi bi-file-earmark-text me-2"></i>Journal & Conference Papers
-              <ul>
-                <li>A Novel Classification Method Based on a Two-Phase Technique for Learning Imbalanced Text Data. – <em>Symmetry</em>, 2022</li>
-                  <ul>
-                    <li><strong>The Publication URL: </strong><a href = https://www.mdpi.com/2073-8994/14/3/567>https://www.mdpi.com/2073-8994/14/3/567</a></li>
-                    <li><strong>Dissertation Method: </strong><a href = https://github.com/drhanko/TPC>https://github.com/drhanko/TPC</a></li>
-                  </ul>
-              </ul>
-            </li>
-          </ul>
+          <div class="card">
+            <div class="card-body">
+              <h5>A Novel Classification Method Based on a Two-Phase Technique for Learning Imbalanced Text Data</h5>
+              <p class="text-muted"><em>Symmetry</em>, 2022</p>
+              
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <a href="https://www.mdpi.com/2073-8994/14/3/567" target="_blank" class="btn btn-sm btn-outline-primary">
+                  <i class="bi bi-link-45deg me-1"></i>Publication URL
+                </a>
+                <a href="https://github.com/drhanko/TPC" target="_blank" class="btn btn-sm btn-outline-secondary">
+                  <i class="bi bi-github me-1"></i>Dissertation Method
+                </a>
+              </div>
+              
+              <p>This research presents an innovative approach to handling imbalanced text data classification challenges through a two-phase technique that improves model performance on minority classes.</p>
+              <div class="d-flex flex-wrap gap-1">
+                <span class="badge bg-light text-dark">Machine Learning</span>
+                <span class="badge bg-light text-dark">Imbalanced Dataset</span>
+                <span class="badge bg-light text-dark">Genetic Algorithm</span>
+              </div>
+            </div>
+          </div>
         </section>
 
-        <!-- ✅ Competition -->
+        <!-- Competition -->
         <section id="competition" class="mb-5">
           <h2 class="section-title"><i class="bi bi-trophy-fill me-2"></i>Competition</h2>
-          <ul class="list-unstyled">
-            <li><i class="bi bi-lightning-charge-fill me-2"></i>2017 National Taiwan University Creativity Entrepreneurship Competition
-              <ul>
-                <li>Honorable mention</li>
-                <ul>
-                   <li>Creating practical sport App with useful functions, such as voice input, counting steps,
-                   recording the calories every day and comparing results every time by using chart explicitly.</li>
-                  </ul>
-              </ul>
-            </li>
-          </ul>
+          <div class="card">
+            <div class="card-body">
+              <h5>2017 National Taiwan University Creativity Entrepreneurship Competition</h5>
+              <p class="text-muted">Honorable Mention</p>
+              
+              <p>Developed a practical sports application with innovative features including voice input, step counting, calorie tracking, and comparative data visualization.</p>
+              
+              <div class="d-flex flex-wrap gap-1">
+                <span class="badge bg-light text-dark">Mobile App</span>
+                <span class="badge bg-light text-dark">Health Tracking</span>
+                <span class="badge bg-light text-dark">Data Visualization</span>
+              </div>
+            </div>
+          </div>
         </section>
 
-        <footer class="text-center text-muted mt-5">
-          &copy; 2025 Hank Hsu．Powered by GitHub
+        <footer class="text-center text-muted mt-5 pt-4 border-top">
+          <p>&copy; 2025 Hank Hsu • Powered by GitHub</p>
+          <p class="small">Last updated: June 2025</p>
         </footer>
       </main>
 
-      <!-- ===== 右側導覽列 ===== -->
+      <!-- 右側導覽列 -->
       <aside class="col-md-3 d-none d-md-block">
         <nav id="sidebar-nav" class="nav flex-column text-end">
-          <span class="fw-bold mb-2"><i class="bi bi-file-richtext-fill me-2"></i>BookMarks</span>
+          <span class="fw-bold mb-2"><i class="bi bi-file-richtext-fill me-2"></i>Navigation</span>
           <a class="nav-link" href="#Facts about me">Facts about me</a>
           <a class="nav-link" href="#contact">Contact Info</a>
-          <a class="nav-link" href="#skills">Professional Highlight</a>
+          <a class="nav-link" href="#skills">Professional Highlights</a>
           <a class="nav-link" href="#education">Education</a>
           <a class="nav-link" href="#experience">Professional Experience</a>
           <a class="nav-link" href="#publication">Publication</a>
           <a class="nav-link" href="#competition">Competition</a>
-          <button class="btn btn-outline-secondary position-absolute top-0 end-0 m-3" id="themeToggleBtn">🌙</button>
+          
+          <div class="mt-4 pt-3 border-top">
+            <button class="btn btn-outline-primary w-100 mb-2" id="themeToggleBtn">
+              <i class="bi bi-moon me-2"></i>Dark Mode
+            </button>
+            <a href="#contact" class="btn btn-primary w-100">
+              <i class="bi bi-envelope me-2"></i>Contact Me
+            </a>
+          </div>
         </nav>
       </aside>
     </div>
   </div>
 
+  <!-- 返回顶部按钮 -->
+  <button class="floating-btn btn btn-primary" id="backToTop" title="Back to top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- 暗黑模式切換 -->
   <script>
+    // 暗黑模式切换
     const themeToggleBtn = document.getElementById('themeToggleBtn');
     const root = document.documentElement;
     const storedTheme = localStorage.getItem('theme');
+    
     if (storedTheme) {
       root.setAttribute('data-bs-theme', storedTheme);
-      themeToggleBtn.textContent = storedTheme === 'dark' ? '🌞' : '🌙';
+      updateThemeButton(storedTheme);
     }
+    
     themeToggleBtn.addEventListener('click', () => {
       const currentTheme = root.getAttribute('data-bs-theme');
       const newTheme = currentTheme === 'light' ? 'dark' : 'light';
       root.setAttribute('data-bs-theme', newTheme);
       localStorage.setItem('theme', newTheme);
-      themeToggleBtn.textContent = newTheme === 'dark' ? '🌞' : '🌙';
+      updateThemeButton(newTheme);
     });
-      window.onload = function() {
-    window.scrollTo(0, 0);
-  };
+    
+    function updateThemeButton(theme) {
+      if (theme === 'dark') {
+        themeToggleBtn.innerHTML = '<i class="bi bi-sun me-2"></i>Light Mode';
+        themeToggleBtn.classList.remove('btn-outline-primary');
+        themeToggleBtn.classList.add('btn-outline-warning');
+      } else {
+        themeToggleBtn.innerHTML = '<i class="bi bi-moon me-2"></i>Dark Mode';
+        themeToggleBtn.classList.remove('btn-outline-warning');
+        themeToggleBtn.classList.add('btn-outline-primary');
+      }
+    }
+    
+    // 返回顶部功能
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.style.display = 'flex';
+      } else {
+        backToTopBtn.style.display = 'none';
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // 页面加载时滚动到顶部
+    window.onload = function() {
+      window.scrollTo(0, 0);
+    };
+    
+    // 导航链接激活状态
+    const navLinks = document.querySelectorAll('#sidebar-nav .nav-link');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const sections = document.querySelectorAll('section');
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - 100) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').substring(1) === current) {
+          link.classList.add('active');
+        }
+      });
+    });
   </script>
 </body>
 </html>
