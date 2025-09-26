@@ -104,13 +104,100 @@
       color: var(--primary-color) !important;
     }
     
-    .progress {
-      height: 8px;
-      margin-bottom: 1rem;
-    }
-    
     .skill-category {
       margin-bottom: 2rem;
+    }
+    
+    /* 技術技能優化樣式 */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    
+    .skill-item {
+      background: var(--light-bg);
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      border-left: 4px solid var(--primary-color);
+      transition: all 0.3s ease;
+    }
+    
+    .skill-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .skill-category-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    
+    .skill-tag {
+      background: white;
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
+      padding: 0.25rem 0.5rem;
+      border-radius: 1rem;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+    
+    .skill-tag:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+    
+    /* 項目經驗優化樣式 */
+    .project-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .stat-card {
+      background: linear-gradient(135deg, var(--primary-color), #0a58ca);
+      color: white;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+    }
+    
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    .project-details {
+      background: var(--light-bg);
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      border-left: 5px solid var(--accent-color);
+    }
+    
+    .project-highlight {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
     }
     
     .timeline {
@@ -189,6 +276,14 @@
       #sidebar-nav {
         display: none;
       }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .project-stats {
+        grid-template-columns: 1fr;
+      }
     }
     
     [data-bs-theme="dark"] {
@@ -202,6 +297,21 @@
     
     [data-bs-theme="dark"] .tools-line {
       background-color: #495057;
+    }
+    
+    [data-bs-theme="dark"] .skill-item {
+      background: #495057;
+    }
+    
+    [data-bs-theme="dark"] .skill-tag {
+      background: #343a40;
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+    }
+    
+    [data-bs-theme="dark"] .skill-tag:hover {
+      background: var(--accent-color);
+      color: #343a40;
     }
   </style>
 </head>
@@ -286,39 +396,124 @@
         <section id="skills" class="mb-5">
           <h2 class="section-title"><i class="bi bi-lightbulb-fill me-2"></i>Professional Highlights</h2>
           
-          <div class="row">
-            <div class="col-md-4 skill-category">
-              <div class="card h-100">
-                <div class="card-body">
-                  <h5 class="card-title"><i class="bi bi-tools me-2"></i>Technical Skills</h5>
-                  <ul>
-                    <li>Code technique: Python, Java, SQL(MySQL), PowerShell, Bash.</li>
-                    <li>Operation Hardware Management: Linux OS based technique, x86 server management, NAS management, Ignition SCADA system management, Tenable OT, HighByte, .</li>
-                    <li>Big Data Infrastructure and Machine learning knowledge: Hadoop, TensorFlow, pyTorch, BeautifulSoup, Scikit-Learn.</li>
-                    <li>VMware architecture knowledge: VMware eco-system management and optimization.</li>
-                    <li>Data Visualization: Seaborn, Matplotlib, Tableau, PowerBI. </li>
-                    <li>Other: Git.</li>
-                  </ul>
+          <!-- Technical Skills 優化版 -->
+          <div class="skill-category">
+            <h4 class="mb-3"><i class="bi bi-tools text-primary me-2"></i>Technical Skills</h4>
+            <div class="skills-grid">
+              <div class="skill-item">
+                <div class="skill-category-title">
+                  <i class="bi bi-code-slash"></i>
+                  <span>Programming & Scripting</span>
+                </div>
+                <p>Python, Java, SQL(MySQL), PowerShell, Bash</p>
+                <div class="skill-tags">
+                  <span class="skill-tag">Python</span>
+                  <span class="skill-tag">Java</span>
+                  <span class="skill-tag">SQL</span>
+                  <span class="skill-tag">PowerShell</span>
+                  <span class="skill-tag">Bash</span>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-category-title">
+                  <i class="bi bi-cpu"></i>
+                  <span>Infrastructure & Hardware</span>
+                </div>
+                <p>Linux OS, x86 server management, NAS management, VMware ecosystem</p>
+                <div class="skill-tags">
+                  <span class="skill-tag">Linux</span>
+                  <span class="skill-tag">x86 Servers</span>
+                  <span class="skill-tag">NAS</span>
+                  <span class="skill-tag">VMware</span>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-category-title">
+                  <i class="bi bi-diagram-3"></i>
+                  <span>OT & Industrial Systems</span>
+                </div>
+                <p>Ignition SCADA system management, Tenable OT, HighByte</p>
+                <div class="skill-tags">
+                  <span class="skill-tag">Ignition SCADA</span>
+                  <span class="skill-tag">Tenable OT</span>
+                  <span class="skill-tag">HighByte</span>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-category-title">
+                  <i class="bi bi-graph-up-arrow"></i>
+                  <span>Data Science & Analytics</span>
+                </div>
+                <p>Hadoop, TensorFlow, PyTorch, BeautifulSoup, Scikit-Learn</p>
+                <div class="skill-tags">
+                  <span class="skill-tag">Hadoop</span>
+                  <span class="skill-tag">TensorFlow</span>
+                  <span class="skill-tag">PyTorch</span>
+                  <span class="skill-tag">Scikit-Learn</span>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-category-title">
+                  <i class="bi bi-bar-chart"></i>
+                  <span>Data Visualization</span>
+                </div>
+                <p>Seaborn, Matplotlib, Tableau, PowerBI</p>
+                <div class="skill-tags">
+                  <span class="skill-tag">Seaborn</span>
+                  <span class="skill-tag">Matplotlib</span>
+                  <span class="skill-tag">Tableau</span>
+                  <span class="skill-tag">PowerBI</span>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-category-title">
+                  <i class="bi bi-gear"></i>
+                  <span>Other Tools</span>
+                </div>
+                <p>Version control and collaboration tools</p>
+                <div class="skill-tags">
+                  <span class="skill-tag">Git</span>
                 </div>
               </div>
             </div>
+          </div>
+          
+          <!-- Project Experience 優化版 -->
+          <div class="skill-category">
+            <h4 class="mb-3"><i class="bi bi-graph-up text-success me-2"></i>Project Experience Summary</h4>
             
-            
-            <div class="col-md-4 skill-category">
-              <div class="card h-100">
-                <div class="card-body">
-                  <h5 class="card-title"><i class="bi bi-graph-up me-2"></i>Project Experience</h5>
-                  <ul>
-                    <li>30+ VMware design and installation projects</li>
-                    <li>10+ NAS storage cluster projects</li>
-                    <li>10+ Automation tool developments</li>
-                    <li>20+ Ignition ecosystem optimizations</li>
-                    <li>Leading critical extension projects</li>
-                    <li>10+ HighByte IT/OT dataflow configurations</li>
-                  </ul>
-                </div>
+            <div class="project-stats">
+              <div class="stat-card">
+                <div class="stat-number">30+</div>
+                <div class="stat-label">VMware Design & Installation Projects</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Ignition Ecosystem Optimizations</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">NAS Storage Cluster Projects</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Automation Tool Developments</div>
               </div>
             </div>
+            
+            <div class="project-details">
+              <p class="project-highlight"><i class="bi bi-star-fill text-warning me-2"></i>Key Leadership Experience:</p>
+              <p>Leading the Ignition Node Critical Extension Project, which aims to solve a serious performance issue and has never been done at Entegris before.</p>
+              
+              <p class="project-highlight mt-3"><i class="bi bi-lightning-charge-fill text-info me-2"></i>Additional Achievements:</p>
+              <p>10+ HighByte IT/OT dataflow configuration projects for Big Data Hadoop solution and operational efficiency improvement.</p>
+            </div>
+          </div>
             
             <div class="col-md-4 skill-category">
               <div class="card h-100">
