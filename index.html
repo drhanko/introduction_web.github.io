@@ -262,15 +262,72 @@
       justify-content: center;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
-    
+    /* 統一列表樣式 */
+ul {
+  padding-left: 1rem; /* 或使用 ps-3 class */
+}
+
+.skills-compact .skill-group {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.skills-compact .skill-group:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.project-stats-compact .project-stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background: #f8f9fa;
+  border-radius: 0.25rem;
+}
+
+.project-stats-compact .stat-number {
+  font-weight: bold;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+.project-stats-compact .stat-label {
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+}
+
+.project-highlight-compact {
+  background: #332701;
+  border-left-color: #ffc107;
+  border-left: 4px solid #ffc107;
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+
+
+
+
+
+
+
+
+
     @media (max-width: 768px) {
       .banner {
-        height: 200px;
-        margin-bottom: 80px;
+    height: 180px;
+    margin-bottom: 60px;
       }
       
       header .avatar {
-        margin-top: -80px;
+            margin-top: -60px; /* 原本 -80px 或 -100px 可能太多 */
+    width: 120px;
+    height: 120px;
       }
       
       #sidebar-nav {
@@ -284,11 +341,30 @@
       .project-stats {
         grid-template-columns: 1fr;
       }
+
+        .skills-compact .skill-group {
+    font-size: 0.9rem;
+  }
+  
+  .project-stats-compact .project-stat-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
     }
     
     [data-bs-theme="dark"] {
-      --light-bg: #343a40;
+  --light-bg: #343a40;
+  --primary-color: #0d6efd;
+  --secondary-color: #adb5bd; /* 提升文字對比 */
     }
+
+    [data-bs-theme="dark"] body {
+  background-color: #212529;
+}
+[data-bs-theme="dark"] .text-muted {
+  color: #ced4da !important;
+}
     
     [data-bs-theme="dark"] .card {
       background-color: #2d3035;
@@ -345,7 +421,7 @@
         </header>
 
         <!-- Facts about me -->
-        <section id="Facts about me" class="mb-5">
+        <section id="facts-about-me" class="mb-5">
           <h2 class="section-title"><i class="bi bi-person-arms-up me-2"></i>Facts about me</h2>
           <div class="row">
             <div class="col-md-6">
@@ -385,7 +461,7 @@
                 <i class="bi bi-linkedin me-3 fs-4 text-primary"></i>
                 <div>
                   <h5 class="mb-0">LinkedIn</h5>
-                  <a href="https://www.linkedin.com/in/hank-hsu-59a181181/" target="_blank" class="text-decoration-none">Hank Hsu</a>
+                  <a href="https://www.linkedin.com/in/hank-hsu-59a181181/" target="_blank" class="text-decoration-none" rel="noopener noreferrer">Hank Hsu</a>
                 </div>
               </div>
             </div>
@@ -394,142 +470,95 @@
 
         <!-- Professional Highlight -->
         <section id="skills" class="mb-5">
-          <h2 class="section-title"><i class="bi bi-lightbulb-fill me-2"></i>Professional Highlights</h2>
-          
+          <h2 class="section-title"><i class="bi bi-lightbulb-fill me-2"></i>Professional Highlights</h2> 
+                  
           <!-- Technical Skills 優化版 -->
-          <div class="skill-category">
-            <h4 class="mb-3"><i class="bi bi-tools text-primary me-2"></i>Technical Skills</h4>
-            <div class="skills-grid">
-              <div class="skill-item">
-                <div class="skill-category-title">
-                  <i class="bi bi-code-slash"></i>
-                  <span>Programming & Scripting</span>
-                </div>
-                <p>Python, Java, SQL(MySQL), PowerShell, Bash</p>
-                <div class="skill-tags">
-                  <span class="skill-tag">Python</span>
-                  <span class="skill-tag">Java</span>
-                  <span class="skill-tag">SQL</span>
-                  <span class="skill-tag">PowerShell</span>
-                  <span class="skill-tag">Bash</span>
-                </div>
-              </div>
-              
-              <div class="skill-item">
-                <div class="skill-category-title">
-                  <i class="bi bi-cpu"></i>
-                  <span>Infrastructure & Hardware</span>
-                </div>
-                <p>Linux OS, x86 server management, NAS management, VMware ecosystem</p>
-                <div class="skill-tags">
-                  <span class="skill-tag">Linux</span>
-                  <span class="skill-tag">x86 Servers</span>
-                  <span class="skill-tag">NAS</span>
-                  <span class="skill-tag">VMware</span>
-                </div>
-              </div>
-              
-              <div class="skill-item">
-                <div class="skill-category-title">
-                  <i class="bi bi-diagram-3"></i>
-                  <span>OT & Industrial Systems</span>
-                </div>
-                <p>Ignition SCADA system management, Tenable OT, HighByte</p>
-                <div class="skill-tags">
-                  <span class="skill-tag">Ignition SCADA</span>
-                  <span class="skill-tag">Tenable OT</span>
-                  <span class="skill-tag">HighByte</span>
-                </div>
-              </div>
-              
-              <div class="skill-item">
-                <div class="skill-category-title">
-                  <i class="bi bi-graph-up-arrow"></i>
-                  <span>Data Science & Analytics</span>
-                </div>
-                <p>Hadoop, TensorFlow, PyTorch, BeautifulSoup, Scikit-Learn</p>
-                <div class="skill-tags">
-                  <span class="skill-tag">Hadoop</span>
-                  <span class="skill-tag">TensorFlow</span>
-                  <span class="skill-tag">PyTorch</span>
-                  <span class="skill-tag">Scikit-Learn</span>
-                </div>
-              </div>
-              
-              <div class="skill-item">
-                <div class="skill-category-title">
-                  <i class="bi bi-bar-chart"></i>
-                  <span>Data Visualization</span>
-                </div>
-                <p>Seaborn, Matplotlib, Tableau, PowerBI</p>
-                <div class="skill-tags">
-                  <span class="skill-tag">Seaborn</span>
-                  <span class="skill-tag">Matplotlib</span>
-                  <span class="skill-tag">Tableau</span>
-                  <span class="skill-tag">PowerBI</span>
-                </div>
-              </div>
-              
-              <div class="skill-item">
-                <div class="skill-category-title">
-                  <i class="bi bi-gear"></i>
-                  <span>Other Tools</span>
-                </div>
-                <p>Version control and collaboration tools</p>
-                <div class="skill-tags">
-                  <span class="skill-tag">Git</span>
-                </div>
-              </div>
+            <div class="row">
+    <!-- Technical Skills - 優化版本 -->
+    <div class="col-lg-6 skill-category">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title"><i class="bi bi-tools me-2"></i>Technical Skills</h5>
+          <div class="skills-compact">
+            <div class="skill-group">
+              <strong>Programming:</strong> Python, Java, SQL(MySQL), PowerShell, Bash
+            </div>
+            <div class="skill-group">
+              <strong>Infrastructure:</strong> Linux, x86 servers, NAS, VMware ecosystem
+            </div>
+            <div class="skill-group">
+              <strong>OT Systems:</strong> Ignition SCADA, Tenable OT, HighByte
+            </div>
+            <div class="skill-group">
+              <strong>Data Science:</strong> Hadoop, TensorFlow, PyTorch, Scikit-Learn
+            </div>
+            <div class="skill-group">
+              <strong>Visualization:</strong> Seaborn, Matplotlib, Tableau, PowerBI
+            </div>
+            <div class="skill-group">
+              <strong>Tools:</strong> Git
             </div>
           </div>
+        </div>
+      </div>
+    </div>
           
-          <!-- Project Experience 優化版 -->
-          <div class="skill-category">
-            <h4 class="mb-3"><i class="bi bi-graph-up text-success me-2"></i>Project Experience Summary</h4>
-            
-            <div class="project-stats">
-              <div class="stat-card">
-                <div class="stat-number">30+</div>
-                <div class="stat-label">VMware Design & Installation Projects</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-number">20+</div>
-                <div class="stat-label">Ignition Ecosystem Optimizations</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-number">10+</div>
-                <div class="stat-label">NAS Storage Cluster Projects</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-number">10+</div>
-                <div class="stat-label">Automation Tool Developments</div>
-              </div>
+      <!-- Project Experience -->
+    <div class="col-lg-6 skill-category">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title"><i class="bi bi-graph-up me-2"></i>Project Experience</h5>
+          <div class="project-stats-compact">
+            <div class="project-stat-item">
+              <span class="stat-number">30+</span>
+              <span class="stat-label">VMware projects</span>
             </div>
-            
-            <div class="project-details">
-              <p class="project-highlight"><i class="bi bi-star-fill text-warning me-2"></i>Key Leadership Experience:</p>
-              <p>Leading the Ignition Node Critical Extension Project, which aims to solve a serious performance issue and has never been done at Entegris before.</p>
-              
-              <p class="project-highlight mt-3"><i class="bi bi-lightning-charge-fill text-info me-2"></i>Additional Achievements:</p>
-              <p>10+ HighByte IT/OT dataflow configuration projects for Big Data Hadoop solution and operational efficiency improvement.</p>
+            <div class="project-stat-item">
+              <span class="stat-number">20+</span>
+              <span class="stat-label">Ignition optimizations</span>
+            </div>
+            <div class="project-stat-item">
+              <span class="stat-number">10+</span>
+              <span class="stat-label">NAS clusters</span>
+            </div>
+            <div class="project-stat-item">
+              <span class="stat-number">10+</span>
+              <span class="stat-label">Automation tools</span>
+            </div>
+            <div class="project-highlight-compact">
+              <i class="bi bi-star-fill text-warning"></i>
+              Leading critical Ignition Node Extension Project
             </div>
           </div>
-            
-            <div class="col-md-4 skill-category">
-              <div class="card h-100">
-                <div class="card-body">
-                  <h5 class="card-title"><i class="bi bi-people-fill me-2"></i>Soft Skills</h5>
-                  <ul>
-                    <li>Project management and team leadership</li>
-                    <li>Problem-solving and automation mindset</li>
-                    <li>Cross-functional communication</li>
-                    <li>Continuous improvement focus</li>
-                    <li>Technical documentation</li>
-                  </ul>
-                </div>
-              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Soft Skills -->
+  <div class="row mt-4">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="bi bi-people-fill me-2"></i>Soft Skills</h5>
+          <div class="row">
+            <div class="col-md-4">
+              <strong>Project Management</strong>
+              <p class="small">Leading and coordinating IT/OT projects</p>
+            </div>
+            <div class="col-md-4">
+              <strong>Problem Solving</strong>
+              <p class="small">Creating automation to improve quality</p>
+            </div>
+            <div class="col-md-4">
+              <strong>Communication</strong>
+              <p class="small">Cross-functional collaboration</p>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
         </section>
 
              <!-- Education -->
@@ -852,7 +881,7 @@
       <aside class="col-md-3 d-none d-md-block">
         <nav id="sidebar-nav" class="nav flex-column text-end">
           <span class="fw-bold mb-2"><i class="bi bi-file-richtext-fill me-2"></i>Navigation</span>
-          <a class="nav-link" href="#Facts about me">Facts about me</a>
+          <a class="nav-link" href="#facts-about-me">Facts about me</a>
           <a class="nav-link" href="#contact">Contact Info</a>
           <a class="nav-link" href="#skills">Professional Highlights</a>
           <a class="nav-link" href="#education">Education</a>
