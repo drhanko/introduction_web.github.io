@@ -4,8 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hank Hsu - IT/OT Engineer & AI Data Enthusiast</title>
-
-  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <style>
@@ -108,7 +106,7 @@
       margin-bottom: 2rem;
     }
     
-    /* 技術技能優化樣式 */
+
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -159,7 +157,6 @@
       color: white;
     }
     
-    /* 項目經驗優化樣式 */
     .project-stats {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -262,9 +259,9 @@
       justify-content: center;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
-        /* 統一列表樣式 */
+
     ul {
-      padding-left: 1rem; /* 或使用 ps-3 class */
+      padding-left: 1rem; 
     }
     
     .skills-compact .skill-group {
@@ -307,8 +304,8 @@
       border-radius: 0.25rem;
       margin-top: 1rem;
       font-size: 0.9rem;
-      font-weight: 600;              /* 加粗 */
-      color: #E67E22;                 /* 淺黃背景下仍清晰的深金色字 */
+      font-weight: 600;              
+      color: #E67E22;                
     }
     
      @media (max-width: 768px) {
@@ -318,7 +315,7 @@
           }
           
           header .avatar {
-            margin-top: -60px; /* 原本 -80px 或 -100px 可能太多 */
+            margin-top: -60px;
             width: 120px;
             height: 120px;
           }
@@ -349,7 +346,7 @@
         [data-bs-theme="dark"] {
           --light-bg: #343a40;
           --primary-color: #0d6efd;
-          --secondary-color: #adb5bd; /* 提升文字對比 */
+          --secondary-color: #adb5bd; 
         }
     
         [data-bs-theme="dark"] body {
@@ -396,9 +393,7 @@
 
   <div class="container py-4">
     <div class="row">
-      <!-- 左側主要內容 -->
       <main class="col-md-9">
-        <!-- 頭貼與名字 -->
         <header class="text-center mb-5">
           <div class="d-flex flex-column align-items-center">
             <img src="image/self_photo.jpeg" alt="Hank Hsu" class="avatar mb-3" />
@@ -461,13 +456,10 @@
           </div>
         </section>
 
-        <!-- Professional Highlight -->
-        <section id="skills" class="mb-5">
-          <h2 class="section-title"><i class="bi bi-lightbulb-fill me-2"></i>Professional Highlights</h2> 
-                  
-          <!-- Technical Skills 優化版 -->
-            <div class="row">
-    <!-- Technical Skills - 優化版本 -->
+    <!-- Professional Highlight -->
+    <section id="skills" class="mb-5">
+    <h2 class="section-title"><i class="bi bi-lightbulb-fill me-2"></i>Professional Highlights</h2> 
+    <div class="row">
     <div class="col-lg-6 skill-category">
       <div class="card h-100">
         <div class="card-body">
@@ -506,7 +498,6 @@
               <i class="bi bi-star-fill text-warning"></i>
               Primarily focus on Big Data Hadoop solutions, operational efficiency, overseas support, and factory requests.
             </div>
-
             <div class="project-stat-item mt-3">
               <span class="stat-number">30+</span>
               <span class="stat-label">VMware projects</span>
@@ -557,7 +548,7 @@
       </div>
     </div>
   </div>
-        </section>
+</section>
 
              <!-- Education -->
         <section id="education" class="mb-5">
@@ -705,7 +696,7 @@
             </div>
           </div>
 
-          <!-- 其他经历卡片式展示 -->
+          <!-- small experience -->
           <div class="row">
             <div class="col-md-6">
               <div class="card h-100">
@@ -875,7 +866,7 @@
         </footer>
       </main>
 
-      <!-- 右側導覽列 -->
+      <!-- navigator -->
       <aside class="col-md-3 d-none d-md-block">
         <nav id="sidebar-nav" class="nav flex-column text-end">
           <span class="fw-bold mb-2"><i class="bi bi-file-richtext-fill me-2"></i>Navigation</span>
@@ -900,7 +891,7 @@
     </div>
   </div>
 
-  <!-- 返回顶部按钮 -->
+  <!-- return button -->
   <button class="floating-btn btn btn-primary" id="backToTop" title="Back to top">
     <i class="bi bi-arrow-up"></i>
   </button>
@@ -909,7 +900,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    // 暗黑模式切换
+    // dark/light mode
     const themeToggleBtn = document.getElementById('themeToggleBtn');
     const root = document.documentElement;
     const storedTheme = localStorage.getItem('theme');
@@ -939,7 +930,7 @@
       }
     }
     
-    // 返回顶部功能
+    // return top
     const backToTopBtn = document.getElementById('backToTop');
     
     window.addEventListener('scroll', () => {
@@ -954,12 +945,11 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
     
-    // 页面加载时滚动到顶部
+    // stick to top wehn reload
     window.onload = function() {
       window.scrollTo(0, 0);
     };
     
-    // 导航链接激活状态
     const navLinks = document.querySelectorAll('#sidebar-nav .nav-link');
     
     window.addEventListener('scroll', () => {
