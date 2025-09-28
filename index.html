@@ -262,135 +262,126 @@
       justify-content: center;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
-    /* 統一列表樣式 */
-ul {
-  padding-left: 1rem; /* 或使用 ps-3 class */
-}
-
-.skills-compact .skill-group {
-  margin-bottom: 0.75rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid #e9ecef;
-}
-
-.skills-compact .skill-group:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
-}
-
-.project-stats-compact .project-stat-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
-  padding: 0.5rem;
-  background: #f8f9fa;
-  border-radius: 0.25rem;
-}
-
-.project-stats-compact .stat-number {
-  font-weight: bold;
-  color: var(--primary-color);
-  font-size: 1.1rem;
-}
-
-.project-stats-compact .stat-label {
-  font-size: 0.9rem;
-  color: var(--secondary-color);
-}
-
-.project-highlight-compact {
-  background: #332701;
-  border-left-color: #ffc107;
-  border-left: 4px solid #ffc107;
-  padding: 0.75rem;
-  border-radius: 0.25rem;
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  font-weight: 600;              /* 加粗 */
-  color: #E67E22;                 /* 淺黃背景下仍清晰的深金色字 */
-}
-
-
-
-
-
-
-
-
-
-
-    @media (max-width: 768px) {
-      .banner {
-    height: 180px;
-    margin-bottom: 60px;
-      }
-      
-      header .avatar {
+        /* 統一列表樣式 */
+    ul {
+      padding-left: 1rem; /* 或使用 ps-3 class */
+    }
+    
+    .skills-compact .skill-group {
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #e9ecef;
+    }
+    
+    .skills-compact .skill-group:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .project-stats-compact .project-stat-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      padding: 0.5rem;
+      background: #f8f9fa;
+      border-radius: 0.25rem;
+    }
+    
+    .project-stats-compact .stat-number {
+      font-weight: bold;
+      color: var(--primary-color);
+      font-size: 1.1rem;
+    }
+    
+    .project-stats-compact .stat-label {
+      font-size: 0.9rem;
+      color: var(--secondary-color);
+    }
+    
+    .project-highlight-compact {
+      background: #332701;
+      border-left-color: #ffc107;
+      border-left: 4px solid #ffc107;
+      padding: 0.75rem;
+      border-radius: 0.25rem;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;              /* 加粗 */
+      color: #E67E22;                 /* 淺黃背景下仍清晰的深金色字 */
+    }
+    
+     @media (max-width: 768px) {
+          .banner {
+            height: 180px;
+            margin-bottom: 60px;
+          }
+          
+          header .avatar {
             margin-top: -60px; /* 原本 -80px 或 -100px 可能太多 */
-    width: 120px;
-    height: 120px;
-      }
+            width: 120px;
+            height: 120px;
+          }
+          
+          #sidebar-nav {
+            display: none;
+          }
+          
+          .skills-grid {
+            grid-template-columns: 1fr;
+          }
+          
+          .project-stats {
+            grid-template-columns: 1fr;
+          }
+    
+          .skills-compact .skill-group {
+            font-size: 0.9rem;
+          }
       
-      #sidebar-nav {
-        display: none;
-      }
-      
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .project-stats {
-        grid-template-columns: 1fr;
-      }
-
-        .skills-compact .skill-group {
-    font-size: 0.9rem;
-  }
-  
-  .project-stats-compact .project-stat-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-  }
-    }
+          .project-stats-compact .project-stat-item {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.25rem;
+          }
+        }
+        
+        [data-bs-theme="dark"] {
+          --light-bg: #343a40;
+          --primary-color: #0d6efd;
+          --secondary-color: #adb5bd; /* 提升文字對比 */
+        }
     
-    [data-bs-theme="dark"] {
-  --light-bg: #343a40;
-  --primary-color: #0d6efd;
-  --secondary-color: #adb5bd; /* 提升文字對比 */
-    }
-
-    [data-bs-theme="dark"] body {
-  background-color: #212529;
-}
-[data-bs-theme="dark"] .text-muted {
-  color: #ced4da !important;
-}
-    
-    [data-bs-theme="dark"] .card {
-      background-color: #2d3035;
-      color: #e9ecef;
-    }
-    
-    [data-bs-theme="dark"] .tools-line {
-      background-color: #495057;
-    }
-    
-    [data-bs-theme="dark"] .skill-item {
-      background: #495057;
-    }
-    
-    [data-bs-theme="dark"] .skill-tag {
-      background: #343a40;
-      border-color: var(--accent-color);
-      color: var(--accent-color);
-    }
-    
-    [data-bs-theme="dark"] .skill-tag:hover {
-      background: var(--accent-color);
-      color: #343a40;
-    }
+        [data-bs-theme="dark"] body {
+          background-color: #212529;
+        }
+        [data-bs-theme="dark"] .text-muted {
+          color: #ced4da !important;
+        }
+        
+        [data-bs-theme="dark"] .card {
+          background-color: #2d3035;
+          color: #e9ecef;
+        }
+        
+        [data-bs-theme="dark"] .tools-line {
+          background-color: #495057;
+        }
+        
+        [data-bs-theme="dark"] .skill-item {
+          background: #495057;
+        }
+        
+        [data-bs-theme="dark"] .skill-tag {
+          background: #343a40;
+          border-color: var(--accent-color);
+          color: var(--accent-color);
+        }
+        
+        [data-bs-theme="dark"] .skill-tag:hover {
+          background: var(--accent-color);
+          color: #343a40;
+        }
   </style>
 </head>
 
